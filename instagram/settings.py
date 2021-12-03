@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 ROOT_URLCONF = 'instagram.urls'
@@ -126,6 +128,14 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'kevsonphoenix',
+    'API_KEY': '787695987896983',
+    'API_SECRET': 'Bha_MTQFhZeG0qT5SB6QKmrSdp0'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
