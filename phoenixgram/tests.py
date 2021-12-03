@@ -53,3 +53,10 @@ class ImageTestCase(TestCase):
     saved_images = Image.objects.all()
     self.assertTrue(len(saved_images)==1)
     
+  # Test get all images
+  def test_get_all_images(self):
+    self.image.save_image()
+    self.image2 = Image(2,'image/url', 'another image', 'another caption', 1, 25, 'Image in a plane')
+    self.image2.save_image()
+    saved_images = Image.get_all_images()
+    self.assertTrue(len(saved_images) == 2)
