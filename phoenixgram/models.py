@@ -4,6 +4,13 @@ from django.db import models
 class Profile(models.Model):
   profile_photo = models.ImageField(upload_to='static/images/')
   bio = models.TextField()
+  
+  # save profile method
+  def save_profile(self):
+    self.save()
+  
+  def __str__(self):
+    return self.bio
 
 class Image(models.Model):
   image = models.ImageField(upload_to='static/images/')
