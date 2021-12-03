@@ -8,6 +8,10 @@ class Profile(models.Model):
   # save profile method
   def save_profile(self):
     self.save()
+    
+  # Save profile method
+  def delete_profile(self):
+    self.delete()
   
   def __str__(self):
     return self.bio

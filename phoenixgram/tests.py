@@ -17,3 +17,9 @@ class ProfileTestCase(TestCase):
     profiles = Profile.objects.all()
     self.assertTrue(len(profiles)==1)
     
+  # Test Delete profile method
+  def test_delete_method(self):
+    self.new_profile.save_profile()
+    self.new_profile.delete_profile()
+    profiles = Profile.objects.all()
+    self.assertTrue(len(profiles)==0)
