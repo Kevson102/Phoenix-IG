@@ -24,3 +24,10 @@ class Image(models.Model):
   like = models.IntegerField()
   comment = models.TextField()
   
+  # Save image method
+  def save_image(self):
+    self.save()
+    
+  
+  def __str__(self):
+    return self.image_name
