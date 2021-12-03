@@ -23,3 +23,27 @@ class ProfileTestCase(TestCase):
     self.new_profile.delete_profile()
     profiles = Profile.objects.all()
     self.assertTrue(len(profiles)==0)
+    
+  # Test Update captions
+  def test_updateCategory(self):
+    pass
+  
+class ImageTestCase(TestCase):
+  # set up method
+  def setUp(self):
+    # Create and save a profile instance for the test
+    self.new_profile = Profile(image = 'profile_pict', bio = 'This is my bio')
+    self.new_profile.save_profile()
+    
+    # Create and save an image instance for the test
+    self.image = Image(1,'image/url', 'my image', 'caption to image', 1, 25, 'this is the best image ever')
+    self.image.save()
+    
+  def tearDown(self):
+    Image.objects.all().delete()
+    Profile.objects.all().delete()
+    
+  # Test Instance
+  def test_instance(self):
+    self.assertTrue(isinstance(self.image, Image))
+    
