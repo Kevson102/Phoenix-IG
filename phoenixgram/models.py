@@ -21,6 +21,7 @@ class Image(models.Model):
   image_name = models.CharField(max_length=30)
   image_caption = models.TextField()
   profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+  date_posted = models.DateTimeField(auto_now=True)
   like = models.IntegerField(blank=True)
   comment = models.TextField(blank=True)
   
