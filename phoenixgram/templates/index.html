@@ -4,8 +4,10 @@
 {{block.super}}
 
 {%for image in images %}
-  {{image.image_name}}
-  <img class="img-responsive" src="{{image.image.url}}" alt="Image">
+  <a href="{%url 'image_details' photo_id=image.id%}">
+    {{image.image_name}}
+    <img class="img-responsive" src="{{image.image.url}}" alt="Image">
+  </a>
 {%endfor%}
 
 {%endblock%}
