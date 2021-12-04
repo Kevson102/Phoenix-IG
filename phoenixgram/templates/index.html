@@ -3,6 +3,9 @@
 {%block content%}
 {{block.super}}
 
-<h1>The home page works</h1>
+{%for image in images %}
+  {{image.image_name}}
+  <img class="img-responsive" src="{{image.image.url}}" alt="Image">
+{%endfor%}
 
 {%endblock%}

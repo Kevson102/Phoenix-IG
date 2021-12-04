@@ -21,8 +21,8 @@ class Image(models.Model):
   image_name = models.CharField(max_length=30)
   image_caption = models.TextField()
   profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-  like = models.IntegerField()
-  comment = models.TextField()
+  like = models.IntegerField(blank=True)
+  comment = models.TextField(blank=True)
   
   # Save image method
   def save_image(self):
