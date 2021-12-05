@@ -10,6 +10,10 @@ class CommentForm(forms.ModelForm):
     exclude = ('posted_on', 'user', 'image')
     
 class ImageForm(forms.ModelForm):
+  image = forms.ImageField()
+  image_name = forms.CharField(max_length=30)
+  image_caption = forms.Textarea()
+  
   class Meta:
     model = Image
     exclude = ('profile', 'user', 'date_posted')
