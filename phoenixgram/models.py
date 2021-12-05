@@ -55,4 +55,4 @@ class Comment(models.Model):
   image = models.ForeignKey(Image, on_delete=models.CASCADE)
   
   def __str__(self):
-    return self.comment_message
+    return self.user.username
