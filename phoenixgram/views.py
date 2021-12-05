@@ -2,7 +2,7 @@ from django.http import request, Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Image, Profile, Like, Comment
 from django.contrib.auth.decorators import login_required
-from .forms import CommentForm
+from .forms import CommentForm, ImageForm
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
@@ -32,15 +32,27 @@ def image_detail(request, photo_id):
     form = CommentForm()
   return render(request, "detailedImage.html", {"details":image_details, "form":form, "comments":image_comments})
 
+# profile page
 @login_required(login_url='/accounts/login/')
 def profile(request):
-  return render(request, 'profile.html')
-# def add_comment(request):
-#   if request.method == "POST":
-#     form = CommentForm(request.POST)
-#     if form.is_valid():
-#       return HttpResponseRedirect('image_details')
-#   else:
-#     form = CommentForm()
+  current_user = request.user.id
+  images = Image.objects.filter(user_id = current_user)
+  return render(request, 'profile.html', {"images":images})
+
+@login_required(login_url='/accounts/login/')
+def post_image(request):
+  form = ImageForm(request.POST)
+  profile = Profile.objects.get()
+  if form.is_valid():
+    image = form.cleaned_data.get('image')
+    image_name = form.cleaned_data.get('image_name')
+    image_caption = form.cleaned_data.get('image_caption')
+    form.instance.profile = profile
+    form.instance.user = request.user
     
-#   return render(request, )
+    form.save()
+    return redirect('home')
+  else:
+    form = ImageForm()
+    
+  return render(request, "newpost.html", {"form":form})

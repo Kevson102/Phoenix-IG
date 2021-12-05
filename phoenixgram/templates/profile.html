@@ -3,4 +3,12 @@
 {%block content%}
 {{block.super}}
 
+<div class="container">
+  {{current_user}}
+  {% for image in images %}
+  {{image.image_name}}
+    <img src="{{image.image.url}}" alt="image">
+  {% endfor %}
+</div>
+
 {%endblock%}
