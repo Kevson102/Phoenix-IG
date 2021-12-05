@@ -1,6 +1,6 @@
 from django.http import request, Http404
 from django.shortcuts import render
-from .models import Image, Profile
+from .models import Image, Profile, Like, Comment
 
 # Create your views here.
 def home(request):

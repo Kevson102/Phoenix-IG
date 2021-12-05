@@ -1,1 +1,11 @@
-<h1>this page works</h1>
+{% extends 'common/base.html' %}
+
+{%block content%}
+{{block.super}}
+
+
+  {{details.image_name}}
+  <img class="img-responsive" src="{{details.image.url}}" alt="Image">
+
+
+{%endblock%}

@@ -3,11 +3,20 @@
 {%block content%}
 {{block.super}}
 
-{%for image in images %}
-  <a href="{%url 'image_details' photo_id=image.id%}">
-    {{image.image_name}}
-    <img class="img-responsive" src="{{image.image.url}}" alt="Image">
-  </a>
-{%endfor%}
+<div class="container">
+  <div class="col-sm-3 col-md-3 col-lg-3"></div>
+
+  <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+    {%for image in images %}
+      <a href="{%url 'image_details' photo_id=image.id%}">
+        {{image.image_name}}
+        <img class="img-responsive" src="{{image.image.url}}" alt="Image">
+      </a>
+    {%endfor%}
+  </div>
+
+  <div class="col-sm-3 col-md-3 col-lg-3"></div>
+</div>
+
 
 {%endblock%}

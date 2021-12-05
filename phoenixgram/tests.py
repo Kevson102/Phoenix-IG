@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Profile, Image, User
+from .models import Profile, Image, User, Like, Comment
 
 # Create your tests here.
 class ProfileTestCase(TestCase):
@@ -64,3 +64,23 @@ class ImageTestCase(TestCase):
     self.image2.save_image()
     saved_images = Image.get_all_images()
     self.assertTrue(len(saved_images) == 2)
+    
+# class LikeTestCase(TestCase):
+#   # set up method
+#   def setUp(self):    
+#     user, created = User.objects.get_or_create(username='kevson',  password='password')
+#     # Create and save a profile instance for the test
+#     self.new_profile = Profile(image = 'profile_pict', bio = 'This is my bio', user = user)
+#     self.new_profile.save_profile()
+    
+#     # Create and save an image instance for the test
+#     self.image = Image(1, 'my image', 'caption to image', 1, 1, '2021', user)
+#     self.image.save()
+    
+#     # create a like instance and save it
+#     self.like = Like(1, 1, 1, 1)
+#     self.like.save()
+    
+#   # Test instance
+#   def test_instance(self):
+#     self.assertTrue(isinstance(self.like, Like))
