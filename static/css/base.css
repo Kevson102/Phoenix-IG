@@ -5,3 +5,10 @@ h1{
 .card-foot{
   margin-top: 5px;
 }
+.display{
+  box-sizing: border-box;
+  display: inline-block;
+  /* float: left; */
+  width: 24%;
+  padding: 5px;
+}

@@ -4,10 +4,11 @@
 {{block.super}}
 
 <div class="container">
-  {{current_user}}
   {% for image in images %}
-  {{image.image_name}}
-    <img src="{{image.image.url}}" alt="image">
+  <div class="display text-center">
+    {{image.image_name}} <br>
+    <img src="{{image.image.url}}" class="img-fluid " alt="image">
+  </div>
   {% endfor %}
 </div>
 
