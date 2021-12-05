@@ -11,6 +11,7 @@ def home(request):
   return render(request, 'index.html', {"images":images})
 
 # Display the details of an image
+@login_required(login_url='/accounts/login/')
 def image_detail(request, photo_id):
   try:
     image_details = Image.objects.get(pk = photo_id)
@@ -31,6 +32,9 @@ def image_detail(request, photo_id):
     form = CommentForm()
   return render(request, "detailedImage.html", {"details":image_details, "form":form, "comments":image_comments})
 
+@login_required(login_url='/accounts/login/')
+def profile(request):
+  return render(request, 'profile.html')
 # def add_comment(request):
 #   if request.method == "POST":
 #     form = CommentForm(request.POST)

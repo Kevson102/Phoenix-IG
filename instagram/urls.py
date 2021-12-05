@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'', include('phoenixgram.urls')),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^logout/$', views.logout, {"next_page":'/'}),
 ]
