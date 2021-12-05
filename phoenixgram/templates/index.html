@@ -4,29 +4,41 @@
 {{block.super}}
 
 <div class="container">
+
+  <div class="row">
+      <!-- Empty column -->
   <div class="col-sm-3 col-md-3 col-lg-3"></div>
 
   <div class="col-sm-6 col-md-6 col-lg-6 text-center">
     {%for image in images %}
+    <div class="card">
+
       <a href="{%url 'image_details' photo_id=image.id%}">
         {{image.image_name}}
-        <img class="img-responsive" src="{{image.image.url}}" alt="Image">
+        <img class="img-fluid" src="{{image.image.url}}" alt="Image">
       </a>
+
       <div class="mt-2 row card-foot">
+
         <div class="col-sm-2 col-md-2 col-lg-2">
-          <a href="" class="btn btn-sm btn-primary mt-3">Like</a>
+          <a href="" class="btn btn-sm btn-primary mt-2">Like</a>
         </div>
 
         <div class="col-sm-2 col-md-2 col-lg-2">
-          <a href="" class="btn btn-sm btn-primary mt-3">Comment</a>
+          <a href="" class="btn btn-sm btn-primary mt-2">Comment</a>
         </div>
 
+        <!-- Empty column -->
         <div class="col-sm-2 col-md-2 col-lg-2"></div>
+
       </div>
+    </div>
     {%endfor%}
   </div>
 
   <div class="col-sm-3 col-md-3 col-lg-3"></div>
+  </div>
+
 </div>
 
 
