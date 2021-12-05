@@ -1,10 +1,11 @@
 from django.http import request, Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from .models import Image, Profile, Like, Comment
-
+from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 
 # Create your views here.
+@login_required(login_url='/accounts/login/')
 def home(request):
   images = Image.get_all_images()
   return render(request, 'index.html', {"images":images})
