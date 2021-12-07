@@ -12,7 +12,9 @@ class CommentForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
   image = forms.ImageField()
   image_name = forms.CharField(max_length=30)
-  image_caption = forms.Textarea()
+  image_caption = forms.CharField(widget=forms.Textarea(attrs={
+    'rows':'3',
+  }))
   
   class Meta:
     model = Image

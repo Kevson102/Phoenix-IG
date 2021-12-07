@@ -41,17 +41,19 @@ def profile(request):
 
 @login_required(login_url='/accounts/login/')
 def post_image(request):
-  form = ImageForm(request.POST)
-  profile = Profile.objects.get()
-  if form.is_valid():
-    image = form.cleaned_data.get('image')
-    image_name = form.cleaned_data.get('image_name')
-    image_caption = form.cleaned_data.get('image_caption')
-    form.instance.profile = profile
-    form.instance.user = request.user
-    
-    form.save()
-    return redirect('home')
+  current_user=request.user
+  if request.method == "POST":
+    form = ImageForm(request.POST, request.FILES)
+    profile = Profile.objects.get()
+    if form.is_valid():
+      image = form.save(commit=False)
+      image_name = form.cleaned_data.get('image_name')
+      image_caption = form.cleaned_data.get('image_caption')
+      form.instance.profile = profile
+      form.instance.user = request.user
+      
+      form.save()
+      return redirect('home')
   else:
     form = ImageForm()
     

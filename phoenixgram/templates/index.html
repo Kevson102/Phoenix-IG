@@ -13,8 +13,9 @@
     {%for image in images %}
     <div class="card">
 
+      <p class="text-center">{{image.image_name}}</p>
+      <p style="text-align:left"><strong><em>Caption: </em></strong>{{image.image_caption}}</p>
       <a href="{%url 'image_details' photo_id=image.id%}">
-        {{image.image_name}}
         <img class="img-fluid" src="{{image.image.url}}" alt="Image">
       </a>
 
